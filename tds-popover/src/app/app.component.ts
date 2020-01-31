@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {PopoverDataService} from './service/popover-data.service';
-import {FormControl} from '@angular/forms';
 import {cloneDeep} from 'lodash';
 import {Categories, CategoriesData} from './interface/categories';
 
@@ -13,14 +12,12 @@ import {Categories, CategoriesData} from './interface/categories';
 export class AppComponent implements OnInit {
   title = 'tds-popover';
   public categories: any = [];
-  public toppings: FormControl;
   public products: any;
 
   constructor(private popoverDataService: PopoverDataService) {
   }
 
   ngOnInit(): void {
-    this.toppings = new FormControl();
     this.popoverDataService
       .getCategories()
       .subscribe((categories: CategoriesData) => {
