@@ -13,20 +13,21 @@
 
           <div (click)="$event.stopPropagation();" *ngFor="let product of products" class="product-items"
                style="width: 260px;">
-            <div class="popup-qty">
+            <div class="">
               <button mat-menu-item>{{product.product}}</button>
             </div>
             <div class="popup-qty" (click)="$event.stopPropagation();">
-              <button mat-flat-button (click)="reduceQuantity(product)" [disabled]="product.quantity === 0">
+              <button mat-flat-button (click)="reduceQuantity(product)" [disabled]="product.quantity === 0"
+                      class="quantity-button">
                 <mat-icon>remove</mat-icon>
               </button>
-              <span>{{product.quantity}}</span>
+              <span style="padding: 0 10px;">{{product.quantity}}</span>
               <button (click)="addQuantity(product)" mat-flat-button class="quantity-button">
                 <mat-icon>add</mat-icon>
               </button>
             </div>
           </div>
-          <div style="float: right">
+          <div class="popup-action-buttons">
             <button mat-flat-button (click)="cancel()">Cancel</button>
             <button mat-button (click)="done(item)" color="primary">Done</button>
           </div>
