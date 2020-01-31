@@ -1,28 +1,20 @@
 <div class="toolbar">
-
   <!--  Products -->
   <ng-container *ngFor="let item of categories;">
     <div *ngIf="item.checked" class="product-menu">
-      <button mat-button [matMenuTriggerFor]="belowMenu"
-              (click)="getProductsCopy(item.products)">{{totalQuantityOfEachProduct(item)}} {{item.key}}
+      <button mat-button [matMenuTriggerFor]="belowMenu" (click)="getProductsCopy(item.products)">{{totalQuantityOfEachProduct(item)}} {{item.key}}
         <mat-icon>arrow_drop_down</mat-icon>
       </button>
 
       <mat-menu #belowMenu="matMenu" yPosition="below">
-        <div>
-
-          <div (click)="$event.stopPropagation();" *ngFor="let product of products" class="product-items"
-               style="width: 260px;">
-            <div class="">
-              <button mat-menu-item>{{product.product}}</button>
-            </div>
+          <div (click)="$event.stopPropagation();" *ngFor="let product of products" class="product-items">
+            <div class=""><button mat-menu-item>{{product.product}}</button></div>
             <div class="popup-qty" (click)="$event.stopPropagation();">
-              <button mat-flat-button (click)="reduceQuantity(product)" [disabled]="product.quantity === 0"
-                      class="quantity-button">
+              <button mat-flat-button (click)="reduceProductQuantity(product)" [disabled]="product.quantity === 0" class="quantity-button">
                 <mat-icon>remove</mat-icon>
               </button>
               <span style="padding: 0 10px;">{{product.quantity}}</span>
-              <button (click)="addQuantity(product)" mat-flat-button class="quantity-button">
+              <button (click)="addProductQuantity(product)" mat-flat-button class="quantity-button">
                 <mat-icon>add</mat-icon>
               </button>
             </div>
@@ -31,24 +23,19 @@
             <button mat-flat-button (click)="cancel()">Cancel</button>
             <button mat-button (click)="done(item)" color="primary">Done</button>
           </div>
-        </div>
       </mat-menu>
     </div>
   </ng-container>
 
   <!--  categories-->
   <div class="">
-    <button mat-button [matMenuTriggerFor]="categoriesMenu"><span style="color: red;">categories</span>
+    <button mat-button [matMenuTriggerFor]="categoriesMenu"><span class="red-text">categories</span>
       <mat-icon>arrow_drop_down</mat-icon>
     </button>
     <mat-menu #categoriesMenu="matMenu" xPosition="before">
       <div *ngFor="let item of categories;" class="categories-menu">
-        <div class="categories-check">
-          <mat-icon *ngIf="item.checked">done</mat-icon>
-        </div>
-        <div>
-          <button mat-menu-item (click)="check(item)">{{item.key}}</button>
-        </div>
+        <div class="categories-check"><mat-icon *ngIf="item.checked">done</mat-icon></div>
+        <div><button mat-menu-item (click)="selectCategory(item)">{{item.key}}</button></div>
       </div>
     </mat-menu>
   </div>

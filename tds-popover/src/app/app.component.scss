@@ -30,6 +30,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  width: 260px;
 }
 
 .categories-menu {
@@ -69,4 +70,8 @@ body {
 .popup-action-buttons {
   float: right;
   margin: 10px;
+}
+
+.red-text {
+  color: red;
 }
