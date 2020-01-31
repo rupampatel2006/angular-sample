@@ -1,0 +1,8 @@
+{
+  "categories":{
+    "fruits": ["orrange","banana","apple","watermelon"],
+    "vegetables": ["tomato","cucumber","lettuce","carrot"],
+    "beverages": ["springWater","softDrink","lemonJuice"],
+    "snacks": ["cake","popcorn","chocolate", "cookie"]
+  }
+}
